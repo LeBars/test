@@ -1,4 +1,12 @@
 :root {
-  /* Paste custom properties here. For example:
-  '--c-black': '#000' */
+  --c-black: #141414;
+  --c-gray: #666666;
+  --c-gray-light: #E8E8E8;
+  --c-white: #FFFFFF;
+  --c-accent: #FF5C00;
+  --bg: #E5E5E5;
+  --bg-dark: #F7F7F7;
+  --decor-line: #E9E9E9;
+  --text-black: var(--c-black);
+  --text-orange: var(--accent);
 }
