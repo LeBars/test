@@ -1,7 +1,7 @@
 {
-  "name": "phoenix-bundler",
+  "name": "bundler",
   "version": "1.0.0",
-  "description": "Phoenix Creative Group starter kit",
+  "description": "",
   "repository": "",
   "main": "index.js",
   "license": "MIT",

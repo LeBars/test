@@ -91,8 +91,6 @@ console.log(`Done: component "${componentName}" successfully created`)
 
 function printHelp () {
   const usageText = `
-  Phoenix Creative Group Frontend CLI.
-
   Usage:  node cli <command>
   
     where <command> can be:

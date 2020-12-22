@@ -5,7 +5,7 @@ const serialize = require('serialize-to-js')
 const fs = require('fs')
 const path = require('path')
 
-const testServer = 'https://beloretsky-bi.phoenix-cg.ru'
+const testServer = 'https://TEST_SERVER.ru'
 const mockServer = 'https://MOCK_SERVER.mock.pstmn.io'
 
 server.use((req, res) => {
