@@ -9,4 +9,6 @@
   --decor-line: #E9E9E9;
   --text-black: var(--c-black);
   --text-orange: var(--accent);
+  --f-main-family: Futura;
+  --f-main: var(--f-main-family), sans-serif;
 }
