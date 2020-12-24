@@ -3,6 +3,7 @@ const fs = require('fs')
 const glob = require('glob-all')
 const merge = require('webpack-merge')
 const commonConfig = require('./webpack.common')
+const pjson = require('../package.json')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
@@ -10,6 +11,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
 
 const PATHS = {
   src: path.resolve(__dirname, '../src'),
@@ -60,7 +62,7 @@ const prodConfig = {
         ]
       },
       {
-        test: /\.jpg|png|gif$/,
+        test: /\.(jpg|png|gif|webp)$/,
         use: [
           {
             loader: 'file-loader',
@@ -141,6 +143,43 @@ const prodConfig = {
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: 'allChunks'
+    }),
+    new ManifestPlugin({
+      isChunk: false,
+      isInitial: true,
+      isAsset: false,
+      isModuleAsset: false,
+      fileName: 'template/resources/js/manifest.json',
+      seed: {
+        name: pjson.siteName,
+        start_url: '/',
+        display: 'standalone',
+        theme_color: pjson.baseColor,
+        background_color: pjson.bgColor,
+        icons: [
+          {
+            'src': '/data/images/favicon/180_180/favicon.png',
+            'sizes': '180x180',
+            'type': 'image/png'
+          },
+          {
+            'src': '/data/images/favicon/32_32/favicon.png',
+            'sizes': '32x32',
+            'type': 'image/png'
+          },
+          {
+            'src': '/data/images/favicon/16_16/favicon.png',
+            'sizes': '16x16',
+            'type': 'image/png'
+          },
+          {
+            'src': '/data/images/favicon/upload/favicon.svg',
+            'sizes': '128x128 192x192 256x256 512x512',
+            'type': 'image/svg+xml'
+          }
+        ]
+      },
+      generate: (seed, files, entrypoints) => files.reduce((manifest, { name, path }) => ({ ...manifest }), seed)
     })
   ])
 }
