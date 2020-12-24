@@ -1,5 +1,8 @@
 import Vue from 'vue'
 
+// VUI
+import VButton from './components/VUI/VButton'
+
 import {
   resourcePath,
   screenWidth,
@@ -12,6 +15,7 @@ Vue.use(lazyLoad)
 
 new Vue({
   components: {
+    VButton
   },
   mixins: [
     resourcePath,
