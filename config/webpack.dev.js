@@ -9,7 +9,7 @@ const eslintFriendlyFormatter = require('eslint-friendly-formatter')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const pages = require('./pages')
-const PORT = 8080;
+const PORT = 8080
 
 let pageLoader = pages.reduce((acc, pageName) => {
   let page = new HTMLWebpackPlugin({
@@ -73,7 +73,7 @@ const devConfig = {
         ]
       },
       {
-        test: /\.jpg|png|gif|svg$/,
+        test: /\.(jpg|png|gif|svg|webp)$/,
         use: [
           {
             loader: 'file-loader',
