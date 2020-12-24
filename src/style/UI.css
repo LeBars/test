@@ -1,0 +1,39 @@
+.multiselect {
+  width: 40px;
+  width: 400px;
+}
+.multiselect__select {
+  width: auto;
+  padding: 0;
+  right: 0;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    background: var(--c-black);
+    top: 50%;
+    width: 7px;
+    height: 3px;
+    border: none;
+    margin: 0;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+    right: -4px;
+  }
+}
+.multiselect__tags {
+  border: none;
+}
+.multiselect__option--highlight {
+  background: transparent;
+  color: var(--c-black);
+}
+.multiselect__placeholder {
+  color: var(--c-black);
+  font-size: 15px;
+  text-transform: uppercase;
+}
