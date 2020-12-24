@@ -1,4 +1,5 @@
 import './tailwind.css'
 import './vars.css'
+import './fonts.css'
 import './main.css'
 import './typography.css'

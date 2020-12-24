@@ -1,10 +1,62 @@
-/* отключаем невидимый символ переноса строки L SEP  U+2028 */
-/* Этот шрифт подключить в vars.css после каждого шрифта. */
-/* Убедиться, что есть файлы Space.woff2 и Space.woff в папке ../fonts */
-/* Эта настройка для боевого сервера. На тестовом мы отключаем в целях проверки правильности заполнения */
-@font-face {
-  font-family: "Space";
-  font-display: swap;
-  src: url("../fonts/Space.woff2");
-  src: url("../fonts/Space.woff");
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  font-weight: normal;
+  font-family: var(--f-main);
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 145px;
+  line-height: 136px;
+  margin-bottom: 76px;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 45px;
+  line-height: 52px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 37px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 34px;
+  margin-bottom: 76px;
+}
+
+p,
+a {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+
+}
+
+.__contacts {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.__uppercase {
+  text-transform: uppercase;
+}
+
+.__lang {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 17px;
 }
