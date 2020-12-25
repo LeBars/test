@@ -43,7 +43,10 @@ a {
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.04em;
+}
 
+a {
+  text-decoration: none;
 }
 
 .__contacts {

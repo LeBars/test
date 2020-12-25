@@ -1,4 +1,5 @@
 extend ../layouts/default.pug
 
 block content
-  include ../components/Header/Header.pug
+  v-button
+  multiselect(:options="['ua', 'ru']" placeholder="ua" selectLabel="")
