@@ -1,2 +1,10 @@
 header.header
-  h1 Хэдер
+  .container
+    a(href="#").logo
+      img(src="../../images/logo.svg", alt="")
+    .wrapper
+      v-menu
+      .header-links.__uppercase
+        a(href="mailto:hello@cursor.education") hello@cursor.education
+        a(href="tel:+38 (063) 049 3115") +38 (063) 049 3115
+    v-select

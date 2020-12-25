@@ -3,6 +3,10 @@ import Multiselect from 'vue-multiselect'
 
 // VUI
 import VButton from './components/VUI/VButton'
+import VSelect from './components/VUI/VSelect'
+
+// Header
+import VMenu from './components/VMenu/VMenu'
 
 import {
   resourcePath,
@@ -18,7 +22,9 @@ Vue.use(lazyLoad)
 
 new Vue({
   components: {
-    VButton
+    VButton,
+    VSelect,
+    VMenu
   },
   mixins: [
     resourcePath,
