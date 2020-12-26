@@ -8,6 +8,7 @@ import VHero from './components/VHero/VHero'
 import VHeroContent from './components/VHeroContent/VHeroContent'
 import VHeroSlider from './components/VHeroSlider/VHeroSlider'
 import VFactoids from './components/VFactoids/VFactoids'
+import VPartners from './components/VPartners/VPartners'
 
 // VUI
 import VButton from './components/VUI/VButton'
@@ -35,7 +36,8 @@ new Vue({
     VHero,
     VHeroContent,
     VHeroSlider,
-    VFactoids
+    VFactoids,
+    VPartners
   },
   mixins: [
     resourcePath,
