@@ -15,23 +15,25 @@
 </template>
 
 <script>
+import { EventBus } from '@/EventBus'
+import { data } from '@/components/Api/Api'
 export default {
   data () {
     return {
-      partners: {
-        title: 'Партнери',
-        subtitle: 'Друзі',
-        logos: [
-          '../../images/partners/image-1_1.png',
-          '../../images/partners/image-1_2.png',
-          '../../images/partners/image-1_3.png',
-          '../../images/partners/image-2_1.png',
-          '../../images/partners/image-2_1.png',
-          '../../images/partners/image-2_2.png',
-          '../../images/partners/image-2_3.png',
-          '../../images/partners/image-2_4.png'
-        ]
-      }
+      partners: {}
+    }
+  },
+  created () {
+    EventBus.$on('change-lang', this.changeLang)
+  },
+  methods: {
+    changeLang (value) {
+      this.getLang(value)
+    },
+    getLang (lang) {
+      let partners = {}
+      lang === 'ua' ? partners = data.ua.partners : partners = data.ru.partners
+      this.partners = partners
     }
   }
 }

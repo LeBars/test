@@ -15,29 +15,25 @@
 </template>
 
 <script>
+import { EventBus } from '@/EventBus'
+import { data } from '@/components/Api/Api'
 export default {
   data () {
     return {
-      factoids: [
-        {
-          id: 1,
-          icon: '../../images/factoids/calendar.svg',
-          title: '5 +',
-          descr: 'років займаємось ІТ освітою'
-        },
-        {
-          id: 2,
-          icon: '../../images/factoids/cap.svg',
-          title: '900 +',
-          descr: 'задоволених випускників'
-        },
-        {
-          id: 3,
-          icon: '../../images/factoids/hands.svg',
-          title: '40 +',
-          descr: 'менторів - практиків'
-        }
-      ]
+      factoids: []
+    }
+  },
+  created () {
+    EventBus.$on('change-lang', this.changeLang)
+  },
+  methods: {
+    changeLang (value) {
+      this.getLang(value)
+    },
+    getLang (lang) {
+      let factoids = []
+      lang === 'ua' ? factoids = data.ua.factoids : factoids = data.ru.factoids
+      this.factoids = factoids
     }
   }
 }

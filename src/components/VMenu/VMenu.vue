@@ -1,11 +1,11 @@
 <template>
   <div class="v-menu">
     <div class="v-menu-link __uppercase" v-if="isDesktope">
-      <a href="#"
-         v-for="(link, index) in links"
-         :key="index"
+      <a :href="link.link"
+         v-for="link in menu"
+         :key="link.id"
       >
-        {{ link }}
+        {{ link.title }}
       </a>
     </div>
     <div v-else>
@@ -13,11 +13,11 @@
         <span></span>
       </div>
       <div class="v-menu-mobile">
-        <a href="#"
-           v-for="(link, index) in links"
-           :key="index"
+        <a :href="link.link"
+           v-for="link in menu"
+           :key="link.id"
         >
-          {{ link }}
+          {{ link.title }}
         </a>
       </div>
     </div>
@@ -25,19 +25,30 @@
 </template>
 
 <script>
+import { EventBus } from '@/EventBus'
+import { data } from '@/components/Api/Api'
 export default {
   data () {
     return {
-      links: [
-        'Напрямки',
-        'Допомога з роботою',
-        'Історії успіху'
-      ]
+      menu: []
     }
   },
   computed: {
     isDesktope () {
       return this.$root.screenWidth > 1300
+    }
+  },
+  created () {
+    EventBus.$on('change-lang', this.changeLang)
+  },
+  methods: {
+    changeLang (value) {
+      this.getLang(value)
+    },
+    getLang (lang) {
+      let menu = []
+      lang === 'ua' ? menu = data.ua.menu : menu = data.ru.menu
+      this.menu = menu
     }
   }
 }

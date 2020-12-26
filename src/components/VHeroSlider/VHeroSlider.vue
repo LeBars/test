@@ -1,7 +1,7 @@
 <template>
   <div class="v-hero-slider">
     <div class="swiper-button-prev v-hero-swiper-button-prev" slot="button-prev"></div>
-    <swiper class="swiper v-hero-swiper" :options="heroSwiperOption">
+    <swiper class="swiper v-hero-swiper" ref="slider" :options="heroSwiperOption" @slideChange="slideChange">
       <swiper-slide class="v-hero-slide" v-for="(ava, index) in avatars" :key="index">
         <div class="v-hero-slide-inner">
           <img :src="ava" alt="">
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { EventBus } from '@/EventBus'
 export default {
   data () {
     return {
@@ -30,6 +31,19 @@ export default {
         '../../images/avatars/ava-2.png',
         '../../images/avatars/ava-3.png'
       ]
+    }
+  },
+  computed: {
+    realIndex () {
+      return this.$refs.slider.swiper.realIndex
+    }
+  },
+  mounted () {
+    this.slideChange()
+  },
+  methods: {
+    slideChange () {
+      EventBus.$emit('change-slide', this.realIndex)
     }
   }
 }
