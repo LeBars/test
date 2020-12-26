@@ -12,14 +12,14 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1380px;
+  max-width: 1440px;
   min-width: 1200px;
   margin: 0 auto;
 }
 
 .wrapper {
   width: 100%;
-  max-width: 1095px;
-  min-width: 900px;
+  max-width: 1234px;
+  /* min-width: ; */
   margin: 0 auto;
 }

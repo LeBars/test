@@ -1,11 +1,12 @@
 .multiselect {
-  width: 40px;
-  width: 400px;
+  width: 45px;
+  cursor: pointer;
 }
 .multiselect__select {
   width: auto;
   padding: 0;
   right: 0;
+  top: -2px;
   &:before,
   &:after {
     content: '';
@@ -13,7 +14,7 @@
     background: var(--c-black);
     top: 50%;
     width: 7px;
-    height: 3px;
+    height: 1px;
     border: none;
     margin: 0;
   }
@@ -41,5 +42,10 @@
 .multiselect__single,
 .multiselect__option {
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 13px;
+}
+
+.multiselect__option--selected.multiselect__option--highlight {
+  background: var(--c-gray-light);
+  color: var(--c-black);
 }
