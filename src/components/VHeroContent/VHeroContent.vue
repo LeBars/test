@@ -2,26 +2,58 @@
   <div class="v-hero-content">
     <div class="v-hero-info">
       <a href="#" class="v-hero-review">
-        <p class="__uppercase">Дивитись відгук</p>
+        <p class="__uppercase">{{ content.review }}</p>
         <svg>
           <use xlink:href="../../images/sprite.svg#play"></use>
         </svg>
       </a>
       <h1 class="v-hero-title">CURSOR</h1>
-      <h4 class="v-hero-subtitle">Школа програмування<br> Ефективна та неформальна IT освiта</h4>
-      <v-button link="#" value="Вивчити програмування"></v-button>
+      <h4 class="v-hero-subtitle" v-html="content.subtitle"></h4>
+      <v-button :link="content.link" :value="content.button"></v-button>
     </div>
     <div class="v-hero-img">
-      <img src="../../images/humans/img-1.png" alt="">
+      <img :src="activeImg" alt="">
     </div>
   </div>
 </template>
 
 <script>
+import { EventBus } from '@/EventBus'
+import { data } from '@/components/Api/Api'
 import VButton from '../VUI/VButton'
 export default {
   components: {
     VButton
+  },
+  data () {
+    return {
+      content: {},
+      humans: [
+        '../../images/humans/img-1.png',
+        '../../images/humans/img-2.png',
+        '../../images/humans/img-3.png'
+      ],
+      activeImg: ''
+    }
+  },
+  created () {
+    EventBus.$on('change-lang', this.changeLang)
+    EventBus.$on('change-slide', this.changeImg)
+  },
+  methods: {
+    changeLang (value) {
+      this.getLang(value)
+    },
+    getLang (lang) {
+      let content = {}
+      lang === 'ua' ? content = data.ua.hero : content = data.ru.hero
+      this.content = content
+    },
+    changeImg (value) {
+      const img = value + 1
+      console.log(img)
+      this.activeImg = `../../images/humans/img-${img}.png`
+    }
   }
 }
 </script>

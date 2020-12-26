@@ -7,12 +7,15 @@
       select-label=""
       :searchable="false"
       :show-labels="false"
+      :allow-empty="false"
+      @input="changeLang"
     >
     </multiselect>
   </div>
 </template>
 
 <script>
+import { EventBus } from '@/EventBus'
 export default {
   data () {
     return {
@@ -21,6 +24,18 @@ export default {
         'ru'
       ],
       value: null
+    }
+  },
+  created () {
+    this.value = this.options[0]
+  },
+  mounted () {
+    this.changeLang()
+  },
+  methods: {
+    changeLang () {
+      // console.log(this.value)
+      EventBus.$emit('change-lang', this.value)
     }
   }
 }
