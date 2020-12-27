@@ -5,5 +5,3 @@ import './ui.css'
 import './fonts.css'
 import './main.css'
 import './typography.css'
-
-import '@/components/Header/Header'

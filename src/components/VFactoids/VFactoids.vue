@@ -41,11 +41,19 @@ export default {
 
 <style lang="postcss">
 .v-factoids {
+  padding: 30px 0;
   & .wrapper {
     min-height: 180px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    @media (--min-desktop) {
+      flex-wrap: nowrap;
+    }
+  }
+  @media (--min-desktop) {
+    padding: 0;
   }
 }
 .v-factoids-item {
@@ -53,8 +61,12 @@ export default {
   max-height: 50px;
   padding-left: 5%;
   &:not(:last-child) {
-    border-right: 1px solid var(--decor-line);
-    padding-right: 5%;
+    margin-bottom: 25px;
+    @media (--min-desktop) {
+      border-right: 1px solid var(--decor-line);
+      padding-right: 5%;
+      margin-bottom: 0;
+    }
   }
 }
 .v-factoids-icon {

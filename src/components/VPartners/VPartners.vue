@@ -43,13 +43,23 @@ export default {
 .v-partners {
   background: var(--bg-dark);
   & h2 {
+    text-align: center;
     &:first-of-type {
-      padding-top: 120px;
+      padding-top: 20px;
       margin-bottom: 0;
+      @media (--min-desktop) {
+        padding-top: 120px;
+      }
     }
     &:last-of-type {
-      margin-bottom: 100px;
+      margin-bottom: 50px;
       color: #999;
+      @media (--min-desktop) {
+        margin-bottom: 100px;
+      }
+    }
+    @media (--min-desktop) {
+      text-align: left;
     }
   }
   & .wrapper {
@@ -61,12 +71,17 @@ export default {
   flex-wrap: wrap;
 }
 .v-patners-logo {
-  width: 25%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
+  @media (--min-phone) {
+    width: 50%;
+  }
   @media (--min-desktop) {
+    width: 25%;
+    margin-bottom: 80px;
     &:nth-child(1) {
       justify-content: flex-start;
     }

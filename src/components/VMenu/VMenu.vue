@@ -1,25 +1,12 @@
 <template>
   <div class="v-menu">
-    <div class="v-menu-link __uppercase" v-if="isDesktope">
+    <div class="v-menu-link __uppercase">
       <a :href="link.link"
          v-for="link in menu"
          :key="link.id"
       >
         {{ link.title }}
       </a>
-    </div>
-    <div v-else>
-      <div class="v-menu-toggle __open">
-        <span></span>
-      </div>
-      <div class="v-menu-mobile">
-        <a :href="link.link"
-           v-for="link in menu"
-           :key="link.id"
-        >
-          {{ link.title }}
-        </a>
-      </div>
     </div>
   </div>
 </template>
@@ -31,11 +18,6 @@ export default {
   data () {
     return {
       menu: []
-    }
-  },
-  computed: {
-    isDesktope () {
-      return this.$root.screenWidth > 1300
     }
   },
   created () {
@@ -56,74 +38,24 @@ export default {
 
 <style lang="postcss">
 .v-menu-link {
+  display: flex;
+  flex-direction: column;
   color: var(--c-black);
   & a {
-    margin-right: 75px;
+    text-align: center;
+    margin-top: 20px;
     color: inherit;
     &:last-child {
       margin-right: 0;
     }
+    @media (--min-desktop) {
+      text-align-last: left;
+      margin-top: 0;
+      margin-right: 75px;
+    }
   }
-}
-.v-menu-toggle {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  /* z-index > mobile menu */
-  z-index: 2;
-  & span {
+  @media (--min-desktop) {
     display: block;
-    width: 100%;
-    height: 2px;
-    position: relative;
-    background: var(--c-black);
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: var(--c-black);
-    }
-    &:before {
-      top: -5px;
-    }
-    &:after {
-      bottom: -5px;
-    }
-  }
-  &.__open {
-    & span {
-      background: transparent;
-      &:before {
-        transform: rotate(45deg);
-        top: 0;
-      }
-      &:after {
-        transform: rotate(-45deg);
-        bottom: 0;
-      }
-    }
-  }
-}
-.v-menu-mobile {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--c-accent);
-  /* z-index > multiselect */
-  z-index: 1;
-  overflow: hidden;
-  & a {
-    font-size: 5rem;
-    line-height: 15rem;
-    color: var(--c-black);
   }
 }
 </style>

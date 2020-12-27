@@ -61,24 +61,47 @@ export default {
 <style lang="postcss">
 .v-hero-content {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  overflow: hidden;
+  @media (--min-desktop) {
+    flex-wrap: nowrap;
+  }
 }
 .v-hero-info {
-  width: 50%;
-  padding: 115px 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px 10px;
   & .v-button {
-    margin-bottom: 115px;
+    margin-bottom: 20px;
+    @media (--min-desktop) {
+      margin-bottom: 115px;
+    }
+  }
+  @media (--min-desktop) {
+    display: block;
+    width: 50%;
+    padding: 115px 0 0 70px;
   }
 }
 .v-hero-img {
   position: relative;
-  width: 50%;
-  min-height: 640px;
+  width: 100%;
+  min-height: 320px;
+  @media (--min-desktop) {
+    width: 50%;
+    min-height: 640px;
+  }
   & img {
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
+    height: 100%;
+    object-fit: contain;
   }
 }
 .v-hero-review {
@@ -95,5 +118,11 @@ export default {
 }
 .v-hero-title {
   padding-top: 20px;
+}
+.v-hero-subtitle {
+  text-align: center;
+  @media (--min-desktop) {
+    text-align: left;
+  }
 }
 </style>

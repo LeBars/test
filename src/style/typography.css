@@ -11,9 +11,14 @@ p {
 
 h1 {
   font-weight: 400;
-  font-size: 145px;
-  line-height: 136px;
-  margin-bottom: 76px;
+  font-size: 80px;
+  line-height: 80px;
+  margin-bottom: 20px;
+  @media (--min-desktop) {
+    font-size: 145px;
+    line-height: 136px;
+    margin-bottom: 76px;
+  }
 }
 
 h2 {

@@ -9,7 +9,8 @@
       <div class="wrapper">
         <v-hero-content></v-hero-content>
       </div>
-      <v-hero-slider></v-hero-slider>
+      <v-hero-slider v-if="isDesktope"></v-hero-slider>
+      <v-hero-slider-mobile v-else></v-hero-slider-mobile>
     </div>
   </div>
 </template>
@@ -17,10 +18,12 @@
 <script>
 import VHeroContent from '../VHeroContent/VHeroContent'
 import VHeroSlider from '../VHeroSlider/VHeroSlider'
+import VHeroSliderMobile from '../VHeroSlider/VHeroSliderMobile'
 export default {
   components: {
     VHeroContent,
-    VHeroSlider
+    VHeroSlider,
+    VHeroSliderMobile
   },
   data () {
     return {
@@ -39,6 +42,11 @@ export default {
         }
       }
     }
+  },
+  computed: {
+    isDesktope () {
+      return this.$root.screenWidth > 1300
+    }
   }
 }
 </script>
@@ -48,36 +56,54 @@ export default {
   border-bottom: 1px solid var(--decor-line);
   & .container {
     display: flex;
+    flex-wrap: wrap;
     /* align-items: center; */
     height: 100%;
+    @media (--min-desktop) {
+      flex-wrap: nowrap;
+    }
   }
   & .wrapper {
     height: 100%;
     margin: 0;
-    border-right: 1px solid var(--decor-line);
-    border-left: 1px solid var(--decor-line);
+    @media (--min-desktop) {
+      border-right: 1px solid var(--decor-line);
+      border-left: 1px solid var(--decor-line);
+    }
   }
 }
 .v-hero-social,
 .v-hero-slider {
-  flex: 7%;
-  max-width: 100px;
+  flex: 100%;
   display: flex;
   justify-content: center;
+  max-width: 100%;
+  @media (--min-desktop) {
+    flex: 7%;
+    max-width: 100px;
+    align-items: center;
+  }
 }
 .v-hero-social {
+  padding-top: 30px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  @media (--min-desktop) {
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 .v-hero-social-link {
   transition: opacity .3s;
   &:hover {
     opacity: .5;
   }
-  &:not(:last-child) {
-    margin-bottom: 50px;
+  @media (--min-desktop) {
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
   }
 }
 </style>
