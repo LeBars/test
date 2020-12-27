@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     changeLang () {
-      // console.log(this.value)
       EventBus.$emit('change-lang', this.value)
     }
   }

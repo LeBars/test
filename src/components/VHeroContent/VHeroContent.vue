@@ -51,7 +51,6 @@ export default {
     },
     changeImg (value) {
       const img = value + 1
-      console.log(img)
       this.activeImg = `../../images/humans/img-${img}.png`
     }
   }
